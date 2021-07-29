@@ -7,7 +7,7 @@ const spanProcessor = new SimpleSpanProcessor(consoleExporter)
 provider.addSpanProcessor(spanProcessor)
 
 const zipkinExporter = new ZipkinExporter({
-  url: 'http://localhost:9411/api/v2/spans',
+  url: 'http://65.0.11.161:9411/api/v2/spans',
   serviceName: 'dashboard-service'
 })
 
@@ -29,10 +29,10 @@ const getUrlContents = (url, fetch) => {
 
 app.get('/dashboard', async (req, res) => {
   //fetch data running from second service
-  const movies = await getUrlContents('http://localhost:3000/movies', require('node-fetch'))
+  const movies = await getUrlContents('http://65.0.11.161:3000/movies', require('node-fetch'))
   res.type('json')
   res.send(JSON.stringify({ dashboard: movies }))
 
 })
 
-app.listen(port, () => { console.log(`Listening at http://localhost:${port}`)})
+app.listen(port, () => { console.log(`Listening at http://65.0.11.161:${port}`)})

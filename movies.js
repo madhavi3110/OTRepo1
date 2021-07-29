@@ -8,7 +8,7 @@ provider.addSpanProcessor(spanProcessor)
 provider.register()
 
 const zipkinExporter = new ZipkinExporter({
-  url: 'http://localhost:9411/api/v2/spans',
+  url: 'http://65.0.11.161:9411/api/v2/spans',
   serviceName: 'movies-service'
 })
 
@@ -29,5 +29,5 @@ app.get('/movies', async function (req, res) {
 })
 
 
-app.listen( port, () => { console.log(`Listening at http://localhost:${port}`)}
+app.listen( port, () => { console.log(`Listening at http://65.0.11.161:${port}`)}
 )
